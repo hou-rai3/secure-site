@@ -1,4 +1,5 @@
 # セキュア認証・認可アプリ
+<img width="843" height="462" alt="image" src="https://github.com/user-attachments/assets/1abc4a4a-16b5-4d1e-97d5-4432924b1b87" />
 
 ## 実装した認証・認可機能
 
