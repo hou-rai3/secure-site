@@ -17,12 +17,6 @@ enum UserStatus {
   SUSPENDED
 }
 
-enum Region {
-  TOKYO
-  OSAKA
-  OKINAWA
-}
-
 model User {
   id                String       @id @default(uuid())
   email             String       @unique
@@ -75,55 +69,4 @@ model LoginHistory {
   @@index([ipAddress, createdAt])
   @@index([userId, createdAt])
   @@map("login_history")
-}
-
-model StolenContent {
-  id        String   @id @default(uuid())
-  content   String
-  createdAt DateTime @default(now()) @map("created_at")
-
-  @@map("stolen_contents")
-}
-
-model NewsItem {
-  id          String   @id @default(uuid())
-  title       String
-  content     String   @default("")
-  region      Region
-  publishedAt DateTime @default(now()) @map("published_at")
-
-  @@index([region])
-  @@map("news")
-}
-
-model Product {
-  id       String     @id
-  name     String
-  price    Int
-  CartItem CartItem[]
-
-  @@map("products")
-}
-
-model CartSession {
-  id        String     @id @default(uuid())
-  expiresAt DateTime   @map("expires_at")
-  CartItem  CartItem[]
-
-  @@index([expiresAt])
-  @@map("cart_sessions")
-}
-
-model CartItem {
-  id            String @id @default(uuid())
-  cartSessionId String @map("cart_session_id")
-  productId     String @map("product_id")
-  quantity      Int
-
-  CartSession CartSession @relation(fields: [cartSessionId], references: [id], onDelete: Cascade)
-  Product     Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
-
-  @@index([cartSessionId])
-  @@unique([cartSessionId, productId])
-  @@map("cart_items")
 }

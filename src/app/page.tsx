@@ -5,6 +5,7 @@ import {
   faGaugeHigh,
   faHistory,
   faIdCard,
+  faKeyboard,
   faLock,
   faShieldHalved,
   faUsersGear,
@@ -17,7 +18,7 @@ const links = [
   {
     href: "/signup",
     label: "新規登録",
-    info: "確認用パスワード、強度チェック、bcrypt保存",
+    info: "確認用パスワード、強度表示、表示切り替え",
     icon: faLock,
     color: "text-red-600",
   },
@@ -31,14 +32,14 @@ const links = [
   {
     href: "/dashboard",
     label: "ダッシュボード",
-    info: "ログイン後だけ入れる保護ページ",
+    info: "アカウント防御レベルと信用スコア内訳",
     icon: faGaugeHigh,
     color: "text-emerald-600",
   },
   {
     href: "/login-history",
     label: "ログイン履歴",
-    info: "成功、失敗、レート制限を確認",
+    info: "成功、失敗、停止、レート制限の履歴",
     icon: faHistory,
     color: "text-orange-500",
   },
@@ -46,20 +47,20 @@ const links = [
     href: "/settings/password",
     label: "パスワード変更",
     info: "現在のパスワード確認と再ハッシュ化",
-    icon: faLock,
+    icon: faKeyboard,
     color: "text-slate-500",
   },
   {
     href: "/admin/users",
     label: "ユーザー管理",
-    info: "adminだけが停止・解除できる画面",
+    info: "管理者による停止・解除",
     icon: faUsersGear,
     color: "text-emerald-700",
   },
   {
     href: "/member/about",
     label: "公開プロフィール編集",
-    info: "ログインが必要な既存機能",
+    info: "ログイン必須。表示時はサニタイズ",
     icon: faCode,
     color: "text-blue-700",
   },
@@ -74,7 +75,7 @@ const Page = async () => {
 
   return (
     <main>
-      <section className="flex min-h-[430px] items-center justify-center border-x border-emerald-100 bg-white px-4 py-12">
+      <section className="flex min-h-[360px] items-center justify-center border-x border-emerald-100 bg-white px-4 py-12">
         <div className="text-center">
           <div className="text-6xl font-black tracking-wide md:text-8xl">
             <span className="text-red-600">S</span>
@@ -87,10 +88,6 @@ const Page = async () => {
           <h1 className="mt-5 text-3xl font-bold text-slate-900 md:text-5xl">
             セキュア認証・認可アプリ
           </h1>
-          <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-slate-600">
-            セッションベース認証、権限制御、パスワード保護、ログイン履歴を確認できる実装です。
-            白背景と緑のナビゲーションを中心に、赤・青・オレンジをアクセントとして使っています。
-          </p>
         </div>
       </section>
 

@@ -10,7 +10,9 @@ export const signupRequestSchema = z
     name: userNameSchema,
     email: emailSchema,
     password: passwordSchema,
-    confirmPassword: z.string().min(1, "確認用パスワードを入力してください。"),
+    confirmPassword: z
+      .string()
+      .min(1, "確認用パスワードを入力してください。"),
   })
   .refine((value) => value.password === value.confirmPassword, {
     path: ["confirmPassword"],

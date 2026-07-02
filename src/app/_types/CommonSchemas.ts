@@ -2,16 +2,20 @@ import { z } from "zod";
 import { Role } from "./Role";
 import { UserStatus } from "./UserStatus";
 
-export const emailSchema = z.string().email("メールアドレスの形式が正しくありません。");
-export const userNameSchema = z.string().min(1, "表示名を入力してください。");
+export const emailSchema = z
+  .string()
+  .email("メールアドレスの形式が正しくありません。");
+export const userNameSchema = z
+  .string()
+  .min(1, "表示名を入力してください。");
 export const roleSchema = z.enum(Role);
 export const userStatusSchema = z.enum(UserStatus);
 
 export const passwordSchema = z
   .string()
   .min(12, "パスワードは12文字以上にしてください。")
-  .refine((value) => /[a-z]/.test(value), "小文字を含めてください。")
-  .refine((value) => /[A-Z]/.test(value), "大文字を含めてください。")
+  .refine((value) => /[a-z]/.test(value), "英小文字を含めてください。")
+  .refine((value) => /[A-Z]/.test(value), "英大文字を含めてください。")
   .refine((value) => /[0-9]/.test(value), "数字を含めてください。")
   .refine((value) => /[^A-Za-z0-9]/.test(value), "記号を含めてください。");
 

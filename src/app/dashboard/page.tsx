@@ -92,7 +92,7 @@ const Page = async () => {
             </div>
           </div>
           <div className="rounded-md bg-emerald-500 px-6 py-4 text-center text-white">
-            <div className="text-sm font-bold">スコア</div>
+            <div className="text-sm font-bold">信用スコア</div>
             <div className="text-4xl font-black">{defense.score} / 100</div>
             <div className="mt-1 text-lg font-bold">評価: {defense.rating}</div>
           </div>
@@ -103,6 +103,10 @@ const Page = async () => {
             className="h-full rounded-full bg-emerald-500"
             style={{ width: `${defense.score}%` }}
           />
+        </div>
+
+        <div className="mt-5 rounded-md border border-orange-200 bg-orange-50 p-4 text-lg font-bold leading-8 text-slate-900">
+          {defense.moodComment}
         </div>
 
         <div id="account-defense-breakdown" className="mt-6 grid gap-3 md:grid-cols-2">
@@ -129,10 +133,10 @@ const Page = async () => {
           <h3 className="text-xl font-black text-slate-900">改善提案</h3>
           {defense.suggestions.length === 0 ? (
             <div className="mt-2 text-slate-700">
-              現在の状態は良好です。この状態を維持してください。
+              今のところ目立つ不安材料はありません。この調子で本人らしい守りを続けましょう。
             </div>
           ) : (
-            <ul className="mt-2 list-disc space-y-1 pl-5 text-slate-700">
+            <ul className="mt-2 list-disc space-y-2 pl-5 text-slate-700">
               {defense.suggestions.map((suggestion) => (
                 <li key={suggestion}>{suggestion}</li>
               ))}

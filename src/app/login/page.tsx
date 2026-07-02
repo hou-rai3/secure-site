@@ -62,7 +62,11 @@ const Page: React.FC = () => {
       mutate("/api/auth", body);
       setIsLoginCompleted(true);
     } catch (e) {
-      setRootError(e instanceof Error ? e.message : "予期しないエラーが発生しました。");
+      setRootError(
+        e instanceof Error
+          ? e.message
+          : "予期しないエラーが発生しました。",
+      );
     } finally {
       setIsPending(false);
     }
