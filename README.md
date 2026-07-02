@@ -1,22 +1,5 @@
 # セキュア認証・認可アプリ
 
-Next.js と Prisma を使った、セッションベース認証の学習用アプリです。JWT は使用せず、DB 管理のセッションと HttpOnly Cookie でログイン状態を扱います。
-
-教材 `web-sec-playground-2` をベースにしていますが、使用しない JWT 関連コード、ニュース、ショップ、XSS デモ用コードは削除し、認証・認可機能に集中した構成にしています。
-
-## 評価観点への対応
-
-| 観点 | 対応内容 |
-| --- | --- |
-| 認証方式 | セッションベース認証 |
-| パスワード保護 | bcrypt でハッシュ化して保存 |
-| Cookie | HttpOnly、SameSite=Lax、Path=/、Max-Age、production では Secure |
-| 認可 | role による USER / ADMIN 制御 |
-| アカウント制御 | status による ACTIVE / SUSPENDED 制御 |
-| 追加機能 | 8個以上の認証・認可関連機能を実装 |
-| README画像 | 5枚掲載 |
-| 不要コード削除 | JWT、ニュース、ショップ関連の画面、API、型、DBモデルを削除 |
-
 ## 実装した認証・認可機能
 
 - 新規登録
@@ -237,10 +220,3 @@ PowerShell の実行ポリシーで `npx` や `npm` が止まる場合は、`npx
 npm run lint
 npm run build
 ```
-
-## 実装上の注意
-
-- セッションCookieの `Secure` は production でのみ有効にしています。localhost の開発環境でも動作確認できるようにするためです。
-- 公開リポジトリに `.env`、DB、APIキー、本番パスワード、個人情報を含めないでください。
-- JWT 関連コードは削除し、セッションベース認証に統一しています。
-- ニュース、ショップ、XSS デモに関する画面、API、型、DBモデルは削除しています。
